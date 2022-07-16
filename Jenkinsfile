@@ -24,7 +24,7 @@ pipeline {
 //         sh 'docker rm -f $(docker ps -a -q)'
 //         sh 'docker rmi $(docker images -a -q)'
         sh 'alias kill3001="fuser -k -n tcp 3001"'
-        sh 'docker-compose up'
+        sh 'docker-compose up --build'
 //         sh 'docker compose ps'
       }
     }
