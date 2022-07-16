@@ -1,0 +1,25 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: observe-jaeger-vs
+spec:
+  hosts:
+  - "*"
+  gateways:
+    - observe-jaeger-gateway
+  http:
+  -match:
+   -uri:
+       exact: /trace
+   rewrite:
+       
+    - fault:
+         delay:
+           percent: 100
+           fixedDelay: 5s
+      route:
+      - destination:
+          host: serviceb
+          port:
+            number: 8080
+          subset: v1
