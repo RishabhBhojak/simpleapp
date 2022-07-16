@@ -25,7 +25,7 @@ pipeline {
 //         sh 'docker rm -vf $(docker ps -aq)'
         sh 'alias kill3001="fuser -k -n tcp 3001"'
         sh 'docker-compose up'
-        sh 'docker compose ps'
+//         sh 'docker compose ps'
       }
     }
     stage('Run tests against the container') {
@@ -37,7 +37,7 @@ pipeline {
   post {
     always {
       sh 'docker-compose down'
-      sh 'docker compose ps'
+//       sh 'docker compose ps'
     }
   }
 }
