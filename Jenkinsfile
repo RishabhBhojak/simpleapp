@@ -21,10 +21,12 @@ pipeline {
       steps {
         sh 'alias kill3000="fuser -k -n tcp 3000"'
         sh 'alias kill80="fuser -k -n tcp 80"'
-        sh 'docker rm -f $(docker ps -a -q)'
-        sh 'docker rmi $(docker images -a -q)'
-        sh 'alias kill3001="fuser -k -n tcp 3001"'
+//         sh 'docker rm -f $(docker ps -a -q)'
+//         sh 'docker rmi $(docker images -a -q)'
+//         sh 'alias kill3001="fuser -k -n tcp 3001"'
         sh 'docker-compose up --build'
+        sh 'docker ps'
+        sh 'docker images'
 //         sh 'docker compose ps'
       }
     }
